@@ -1,15 +1,15 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
 datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
-generator client {
-    provider = "prisma-client-js"
-}
-
 enum UserRole {
     ADMIN
-    REGULAR
+    USER
 }
 
 enum OrderStatus {
@@ -19,12 +19,14 @@ enum OrderStatus {
 }
 
 model User {
-    id       String    @id @default(uuid())
-    email    String    @unique
-    password String
-    role     UserRole
-    orders   Order[]
-    messages Message[]
+    id        String    @id @default(uuid())
+    email     String    @unique
+    password  String
+    role      UserRole  @default(USER)
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    orders    Order[]
+    messages  Message[]
 
     @@index([email])
 }
@@ -34,8 +36,8 @@ model Order {
     description    String
     specifications Json
     quantity       Int
-    metadata       Json?
     status         OrderStatus @default(REVIEW)
+    metadata       Json?
     userId         String
     user           User        @relation(fields: [userId], references: [id])
     chatRoom       ChatRoom?
@@ -47,13 +49,15 @@ model Order {
 }
 
 model ChatRoom {
-    id             String    @id @default(uuid())
-    orderId        String    @unique
-    order          Order     @relation(fields: [orderId], references: [id])
-    messages       Message[]
-    isClosed       Boolean   @default(false)
-    closingSummary String?
-    createdAt      DateTime  @default(now())
+    id        String    @id @default(uuid())
+    orderId   String    @unique
+    order     Order     @relation(fields: [orderId], references: [id])
+    isOpen    Boolean   @default(true)
+    summary   String?
+    messages  Message[]
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    closedAt  DateTime
 
     @@index([orderId])
 }
