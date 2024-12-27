@@ -1,0 +1,72 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+enum UserRole {
+    ADMIN
+    REGULAR
+}
+
+enum OrderStatus {
+    REVIEW
+    PROCESSING
+    COMPLETED
+}
+
+model User {
+    id       String    @id @default(uuid())
+    email    String    @unique
+    password String
+    role     UserRole
+    orders   Order[]
+    messages Message[]
+
+    @@index([email])
+}
+
+model Order {
+    id             String      @id @default(uuid())
+    description    String
+    specifications Json
+    quantity       Int
+    metadata       Json?
+    status         OrderStatus @default(REVIEW)
+    userId         String
+    user           User        @relation(fields: [userId], references: [id])
+    chatRoom       ChatRoom?
+    createdAt      DateTime    @default(now())
+    updatedAt      DateTime    @updatedAt
+
+    @@index([userId])
+    @@index([status])
+}
+
+model ChatRoom {
+    id             String    @id @default(uuid())
+    orderId        String    @unique
+    order          Order     @relation(fields: [orderId], references: [id])
+    messages       Message[]
+    isClosed       Boolean   @default(false)
+    closingSummary String?
+    createdAt      DateTime  @default(now())
+
+    @@index([orderId])
+}
+
+model Message {
+    id         String   @id @default(uuid())
+    content    String
+    chatRoomId String
+    chatRoom   ChatRoom @relation(fields: [chatRoomId], references: [id])
+    userId     String
+    user       User     @relation(fields: [userId], references: [id])
+    createdAt  DateTime @default(now())
+
+    @@index([chatRoomId])
+    @@index([userId])
+}
