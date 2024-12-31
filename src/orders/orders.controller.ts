@@ -27,7 +27,7 @@ export class OrdersController {
     @ApiOperation({summary: 'Get all orders'})
     @ApiResponse({status: 200, description: 'Returns all orders'})
     findAll(@Request() req) {
-        const pagination = { page: 1, limit: 10 }; // Example pagination params, you may want to get these from the request
+        const pagination = { page: 1, limit: 10 };
         return this.ordersService.findAll(req.user.id, req.user.role, pagination);
     }
 
