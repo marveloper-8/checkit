@@ -1,99 +1,240 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚀 Order Management System with Chat Feature
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![NestJS](https://img.shields.io/badge/NestJS-Latest-ea2845.svg)](https://nestjs.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-336791.svg)](https://www.postgresql.org/)
+[![Socket.io](https://img.shields.io/badge/Socket.io-4-white.svg)](https://socket.io/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A robust, enterprise-grade order management system built with NestJS, featuring real-time chat capabilities and comprehensive order tracking functionality.
 
-## Description
+## 📋 Table of Contents
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Features](#-features)
+- [Technical Stack](#-technical-stack)
+- [Prerequisites](#-prerequisites)
+- [Getting Started](#-getting-started)
+- [API Documentation](#-api-documentation)
+- [Architecture](#-architecture)
+- [Security](#-security)
+- [Testing](#-testing)
+- [Contributing](#-contributing)
+- [Support](#-support)
+- [License](#-license)
 
-## Project setup
+## ✨ Features
+
+### 🛡️ User Management
+- **Authentication & Authorization**
+  - Secure role-based authentication (Admin/User)
+  - JWT-based session management
+  - Email/password authentication flow
+  - Password hashing with bcrypt
+  - Role-based access control (RBAC)
+
+### 📦 Order Management
+- **Order Processing**
+  - Comprehensive order creation and tracking
+  - Sophisticated status workflow (Review → Processing → Completed)
+  - Detailed order specifications and metadata
+  - Advanced filtering and search capabilities
+  - Audit logging for all order modifications
+
+### 💬 Real-time Chat System
+- **Communication Features**
+  - Order-specific chat rooms with real-time messaging
+  - Persistent chat history
+  - Admin-controlled chat lifecycle
+  - Automatic chat summaries
+  - Read receipts and typing indicators
+  - File attachment support
+
+## 🛠️ Technical Stack
+
+### Core Technologies
+- **Backend Framework**: NestJS (Latest)
+- **Database**: PostgreSQL 12+
+- **ORM**: Prisma
+- **Real-time Communication**: Socket.io 4
+- **Authentication**: JWT
+- **API Documentation**: Swagger/OpenAPI 3.0
+- **Testing**: Jest & Supertest
+
+### Additional Tools
+- **Logging**: Winston
+- **Validation**: class-validator
+- **Security**: Helmet
+- **Compression**: compression
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- [ ] Node.js (v14.x or higher)
+- [ ] PostgreSQL (v12.x or higher)
+- [ ] npm (v7.x or higher) or yarn (v1.22.x or higher)
+- [ ] Git
+
+## 🚀 Getting Started
+
+### 1. Clone & Install
 
 ```bash
-$ npm install
+# Clone the repository
+git clone <repository-url>
+cd order-management-system
+
+# Install dependencies
+npm install
 ```
 
-## Compile and run the project
+### 2. Configure Environment
 
 ```bash
-# development
-$ npm run start
+# Copy environment configuration
+cp .env.example .env
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# Configure your .env file
+DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
+JWT_SECRET="your-secure-secret-key"
+PORT=3000
+NODE_ENV="development"
 ```
 
-## Run tests
+### 3. Database Setup
 
 ```bash
-# unit tests
-$ npm run test
+# Generate Prisma client
+npm run prisma:generate
 
-# e2e tests
-$ npm run test:e2e
+# Run database migrations
+npm run prisma:migrate
 
-# test coverage
-$ npm run test:cov
+# Seed initial data (optional)
+npm run seed
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 4. Launch Application
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+# Development mode
+npm run start:dev
+
+# Production mode
+npm run build && npm run start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 📚 API Documentation
 
-## Resources
+### REST Endpoints
 
-Check out a few resources that may come in handy when working with NestJS:
+Access the interactive Swagger documentation at `http://localhost:3000/api`
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+#### Core Endpoints
 
-## Support
+```plaintext
+Authentication
+├── POST   /auth/login         # User authentication
+├── POST   /auth/register      # User registration
+└── POST   /auth/refresh       # Refresh access token
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Orders
+├── POST   /orders            # Create order
+├── GET    /orders            # List orders
+├── GET    /orders/:id        # Order details
+└── PATCH  /orders/:id/status # Update status
 
-## Stay in touch
+Chat
+├── GET    /chat/rooms/:id          # Access chat room
+├── POST   /chat/rooms/:id/messages # Send message
+└── POST   /chat/rooms/:id/close    # Close chat room
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### WebSocket Events
 
-## License
+```plaintext
+Chat Events
+├── joinRoom    # Join chat room
+├── leaveRoom   # Exit chat room
+├── sendMessage # Send chat message
+└── typing      # Typing indicator
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 🏗️ Architecture
+
+### Project Structure
+
+```plaintext
+src/
+├── auth/                  # Authentication module
+│   ├── dto/              # Data transfer objects
+│   ├── guards/           # Authentication guards
+│   └── strategies/       # Auth strategies
+├── users/                # User management
+│   ├── dto/             # User DTOs
+│   └── entities/        # User entities
+├── orders/              # Order processing
+│   ├── dto/            # Order DTOs
+│   └── entities/       # Order entities
+├── chat/               # Real-time chat
+│   ├── dto/           # Chat DTOs
+│   ├── events/        # WebSocket events
+│   └── entities/      # Chat entities
+├── common/            # Shared resources
+│   ├── decorators/    # Custom decorators
+│   ├── filters/       # Exception filters
+│   ├── guards/        # Common guards
+│   ├── interfaces/    # Shared interfaces
+│   └── utils/         # Utility functions
+├── config/           # Configuration
+├── prisma/          # Database schema
+└── main.ts          # Entry point
+```
+
+## 🔒 Security
+
+### Implemented Measures
+
+1. **Authentication Security**
+   - JWT with appropriate expiration
+   - Secure password hashing (bcrypt)
+   - Rate limiting on auth endpoints
+   - Refresh token rotation
+
+2. **Data Protection**
+   - Input validation & sanitization
+   - SQL injection prevention
+   - XSS protection
+   - CORS configuration
+   - Helmet security headers
+
+3. **Access Control**
+   - Role-based authorization
+   - Resource-level permissions
+   - Chat room access validation
+   - Row-level security in database
+
+## 🧪 Testing
+
+```bash
+# Run unit tests
+npm run test
+
+# Run integration tests
+npm run test:e2e
+
+# Generate coverage report
+npm run test:cov
+```
+
+### Development Guidelines
+
+- Follow [Conventional Commits](https://www.conventionalcommits.org/)
+- Write tests for new features
+- Update documentation as needed
+- Follow existing code style
+
+---
+
+<div align="center">
+Made with ❤️ by the Joshua
+</div>
