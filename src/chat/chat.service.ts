@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable, NotFoundException } from "@nestjs/common";
 import { UserRole } from "@prisma/client";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "../prisma/prisma.service";
 import { CreateMessageDto } from "./dto/create-message.dto";
 import { CloseChatRoomDto } from "./dto/close-chat-room.dto";
 

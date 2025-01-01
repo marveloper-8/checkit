@@ -3,8 +3,8 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { AuthGuard } from "@nestjs/passport";
-import { RolesGuard } from "src/common/guards/roles.guard";
-import { Roles } from "src/common/decorators/roles.decorators";
+import { RolesGuard } from "../common/guards/roles.guard";
+import { Roles } from "../common/decorators/roles.decorators";
 import { UserRole } from "@prisma/client";
 
 @ApiTags('users')

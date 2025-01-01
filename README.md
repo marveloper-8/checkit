@@ -217,9 +217,6 @@ npm run test
 
 # Run integration tests
 npm run test:e2e
-
-# Generate coverage report
-npm run test:cov
 ```
 
 ### Development Guidelines

@@ -1,7 +1,7 @@
 import { UseGuards } from "@nestjs/common";
 import { OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from "@nestjs/websockets";
 import { Server, Socket } from "socket.io";
-import { WsJwtGuard } from "src/auth/guards/ws-jwt.guard";
+import { WsJwtGuard } from "../auth/guards/ws-jwt.guard";
 import { ChatService } from "./chat.service";
 
 @WebSocketGateway({

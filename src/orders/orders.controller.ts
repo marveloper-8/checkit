@@ -3,8 +3,8 @@ import { AuthGuard } from "@nestjs/passport";
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { OrdersService } from "./orders.service";
 import { CreateOrderDto } from "./dto/create-order.dto";
-import { RolesGuard } from "src/common/guards/roles.guard";
-import { Roles } from "src/common/decorators/roles.decorators";
+import { RolesGuard } from "../common/guards/roles.guard";
+import { Roles } from "../common/decorators/roles.decorators";
 import { UserRole } from "@prisma/client";
 import { UpdateOrderStatusDto } from "./dto/update-order-status.dto";
 

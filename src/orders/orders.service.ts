@@ -1,9 +1,9 @@
 import { ForbiddenException, Injectable, NotFoundException } from "@nestjs/common";
-import { ChatService } from "src/chat/chat.service";
-import { PrismaService } from "src/prisma/prisma.service";
+import { ChatService } from "../chat/chat.service";
+import { PrismaService } from "../prisma/prisma.service";
 import { CreateOrderDto } from "./dto/create-order.dto";
 import { OrderStatus, UserRole } from "@prisma/client";
-import { PaginatedResult, PaginationParams } from "src/common/interfaces/pagination.interface";
+import { PaginatedResult, PaginationParams } from "../common/interfaces/pagination.interface";
 
 @Injectable()
 export class OrdersService {
