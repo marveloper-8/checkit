@@ -3,7 +3,6 @@
 [![NestJS](https://img.shields.io/badge/NestJS-Latest-ea2845.svg)](https://nestjs.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-336791.svg)](https://www.postgresql.org/)
 [![Socket.io](https://img.shields.io/badge/Socket.io-4-white.svg)](https://socket.io/)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A robust, enterprise-grade order management system built with NestJS, featuring real-time chat capabilities and comprehensive order tracking functionality.
 
@@ -17,9 +16,6 @@ A robust, enterprise-grade order management system built with NestJS, featuring 
 - [Architecture](#-architecture)
 - [Security](#-security)
 - [Testing](#-testing)
-- [Contributing](#-contributing)
-- [Support](#-support)
-- [License](#-license)
 
 ## ✨ Features
 
